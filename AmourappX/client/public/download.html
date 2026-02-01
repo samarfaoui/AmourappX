@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmourBird Download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .download-btn {
+            display: block;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 20px 40px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 15px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.5);
+        }
+        .badge {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .info {
+            color: #666;
+            margin-top: 25px;
+            font-size: 14px;
+            text-align: left;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .platform {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .platform-item {
+            text-align: center;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            flex: 1;
+        }
+        .platform-icon {
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+        .check {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AmourBird Hybrid-App</h1>
+        <p class="subtitle">Komplett-Paket mit Android + iOS</p>
+        
+        <div class="platform">
+            <div class="platform-item">
+                <div class="platform-icon">Android</div>
+                <span class="check">Enthalten</span>
+            </div>
+            <div class="platform-item">
+                <div class="platform-icon">iOS</div>
+                <span class="check">Enthalten</span>
+            </div>
+        </div>
+        
+        <a href="/AmourBird_Complete.zip" download="AmourBird_Complete.zip" class="download-btn">
+            Download Komplett-Paket (62 MB)
+            <span class="badge">Android + iOS</span>
+        </a>
+        
+        <div class="info">
+            <strong>Inhalt:</strong>
+            <ul>
+                <li><b>android/</b> - Android-Projekt (APK bauen)</li>
+                <li><b>ios/</b> - iOS-Projekt (IPA bauen auf Mac)</li>
+                <li><b>windows_starter/</b> - Windows BAT-Skripte</li>
+                <li><b>BUILD_ANLEITUNG.md</b> - Schritt-für-Schritt</li>
+                <li>Spieledateien und Source-Code</li>
+            </ul>
+            <strong>BrowserStack Testing:</strong>
+            <ul>
+                <li>APK bauen (Windows/Mac/Linux)</li>
+                <li>IPA bauen (nur Mac)</li>
+                <li>Auf BrowserStack App Live hochladen</li>
+                <li>Auf echten Geraeten testen</li>
+            </ul>
+            <strong>NEU: GitHub Actions (empfohlen):</strong>
+            <ul>
+                <li>Automatisch APK + IPA bauen</li>
+                <li>Kein Mac noetig!</li>
+                <li>Siehe GITHUB_ANLEITUNG.md</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

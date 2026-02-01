@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Fredoka', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Playful Game Palette - Vibrant & Fun */
+  --background: 260 100% 97%;      /* Very Light Purple */
+  --foreground: 260 40% 20%;       /* Dark Purple Text */
+  
+  --primary: 265 89% 66%;          /* Vivid Purple */
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 320 89% 75%;        /* Pink/Coral */
+  --secondary-foreground: 0 0% 100%;
+  
+  --accent: 160 84% 39%;           /* Minty Green */
+  --accent-foreground: 0 0% 100%;
+  
+  --muted: 260 30% 90%;
+  --muted-foreground: 260 20% 50%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 260 30% 85%;
+  --input: 260 30% 90%;
+  --ring: 265 89% 66%;
+  
+  --radius: 1rem;
+}
+
+.dark {
+  /* Dark Mode - Neon/Cyber Playful */
+  --background: 260 40% 10%;
+  --foreground: 260 20% 90%;
+  
+  --primary: 265 89% 66%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 320 89% 66%;
+  --secondary-foreground: 0 0% 100%;
+  
+  --muted: 260 30% 20%;
+  --muted-foreground: 260 20% 70%;
+  
+  --accent: 160 84% 45%;
+  --accent-foreground: 260 40% 10%;
+  
+  --border: 260 30% 20%;
+  --input: 260 30% 20%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    background-image: 
+      radial-gradient(circle at 10% 20%, hsla(var(--primary) / 0.1) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, hsla(var(--secondary) / 0.1) 0%, transparent 20%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-foreground;
+  }
+}
+
+@layer components {
+  /* "Bloop" button style - 3D pressable effect */
+  .btn-bloop {
+    @apply relative transform transition-all duration-100 ease-out active:scale-95 active:translate-y-1;
+    box-shadow: 0 6px 0 0 hsla(var(--primary) / 0.3);
+  }
+  .btn-bloop:active {
+    box-shadow: 0 0px 0 0 hsla(var(--primary) / 0.3);
+  }
+  
+  .card-game {
+    @apply bg-white dark:bg-zinc-800 rounded-3xl border-2 border-border shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+}
