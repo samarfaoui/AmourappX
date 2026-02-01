@@ -1,4 +1,4 @@
-name: Build Android APK & iOS IPA
+name: Build Android APK
 
 on:
   push:
@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - name: Show file structure
+        run: find . -name "*.html" -type f
+      
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -22,9 +25,9 @@ jobs:
       - name: Create web build folder
         run: |
           mkdir -p dist/public
-          cp client/public/AmourBird.html dist/public/index.html
-          cp client/public/AmourBird1.html dist/public/
-          cp -r client/public/generated_images dist/public/ || true
+          find . -name "AmourBird.html" -exec cp {} dist/public/index.html \;
+          find . -name "AmourBird1.html" -exec cp {} dist/public/ \;
+          find . -name "generated_images" -type d -exec cp -r {} dist/public/ \;
       
       - name: Init Capacitor
         run: npx cap init AmourBird com.amourbird.game --web-dir dist/public
