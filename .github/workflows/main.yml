@@ -12,22 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Show file structure
-        run: find . -name "*.html" -type f
-      
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
       
       - name: Install Capacitor
-        run: npm install @capacitor/core @capacitor/cli @capacitor/android
+        run: npm install @capacitor/core@5 @capacitor/cli@5 @capacitor/android@5
       
       - name: Create web build folder
         run: |
           mkdir -p dist/public
           find . -name "AmourBird.html" -exec cp {} dist/public/index.html \;
-          find . -name "AmourBird1.html" -exec cp {} dist/public/ \;
-          find . -name "generated_images" -type d -exec cp -r {} dist/public/ \;
+          find . -name "AmourBird1.html" -exec cp {} dist/public/ \; || true
+          find . -name "generated_images" -type d -exec cp -r {} dist/public/ \; || true
       
       - name: Init Capacitor
         run: npx cap init AmourBird com.amourbird.game --web-dir dist/public
@@ -38,12 +35,18 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '21'
+          java-version: '17'
       
       - uses: android-actions/setup-android@v3
       
+      - name: Fix Kotlin version
+        run: |
+          cd android
+          echo "org.gradle.jvmargs=-Xmx4g" >> gradle.properties
+          sed -i 's/kotlin_version = .*/kotlin_version = "1.9.10"/' build.gradle || true
+      
       - name: Build APK
-        run: cd android && ./gradlew assembleDebug
+        run: cd android && ./gradlew clean assembleDebug --stacktrace
       
       - uses: actions/upload-artifact@v4
         with:
